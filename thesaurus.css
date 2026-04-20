@@ -1,0 +1,125 @@
+/* ============================================================
+   Thésaurus CADER — Styles originaux SKOS
+   ============================================================ */
+
+.kwic-left {
+  float: left;
+  width: 35%;
+  margin-right: 0.8em;
+  direction: rtl;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.kwic-row ul {
+  list-style-type: none;
+  margin-left: 0.8em;
+  display: inline;
+}
+
+.kwic-row ul li { display: inline; }
+
+.kwac-row .att  { margin-bottom: 0px; }
+.kwac-row .alt  { font-style: italic; text-decoration: none; }
+.kwic-row .alt  { font-style: italic; text-decoration: none; }
+
+.att {
+  margin-left: 1em;
+  list-style: none;
+}
+.att > li { font-size: 80%; }
+
+.ext-link {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=');
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  padding-right: 13px;
+  cursor: pointer;
+}
+
+.pref     { font-weight: bold; }
+.alt      { font-style: italic; text-decoration: line-through; }
+.alt-att  { font-style: italic; }
+
+
+/* ============================================================
+   MAE Design System
+   ============================================================ */
+
+/* Textes barrés — .alt */
+.alt, .alt-att {
+  font-size: 16px !important;
+  font-weight: normal !important;
+  color: #000 !important;
+}
+.alt:hover, .alt-att:hover {
+  text-decoration: underline line-through !important;
+}
+
+/* Textes noirs — EN / TA / TG / TT */
+.att > li, ul.att li {
+  font-size: 16px !important;
+  font-weight: normal !important;
+  color: #000 !important;
+  cursor: default;
+}
+.att > li:hover, ul.att li:hover {
+  text-decoration: underline !important;
+}
+
+/* Titres — Bleu MAE Pantone 2767C (RGB 24-43-73) */
+h1, h2, h2.title, .header h1 {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: bold !important;
+  font-size: 28px !important;
+  color: rgb(24, 43, 73) !important;
+  text-transform: uppercase !important;
+}
+
+/* Liens — Rouge MAE Pantone 185C */
+a {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: normal !important;
+  color: rgb(237, 51, 63) !important;
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: underline !important;
+  color: rgb(237, 51, 63) !important;
+}
+
+/* Bouton actif navbar — highlight bleu foncé */
+.navbar.navbar-default.navbar-fixed-bottom li.nav-active > a,
+.navbar.navbar-default.navbar-fixed-bottom li.nav-active > a:hover,
+.navbar.navbar-default.navbar-fixed-bottom li.nav-active > a:focus {
+  background-color: #1a3a6b !important;
+  color: #fff !important;
+  border-radius: 4px !important;
+}
+
+/* Barre de navigation bas */
+.navbar.navbar-default.navbar-fixed-bottom {
+  background-color: #5b9bd5 !important;
+  border-color: #2e75b6 !important;
+}
+.navbar.navbar-default.navbar-fixed-bottom a,
+.navbar.navbar-default.navbar-fixed-bottom a:link,
+.navbar.navbar-default.navbar-fixed-bottom a:visited,
+.navbar.navbar-default.navbar-fixed-bottom a:active,
+.navbar.navbar-default.navbar-fixed-bottom a:focus,
+.navbar.navbar-default.navbar-fixed-bottom a:hover,
+.navbar.navbar-default.navbar-fixed-bottom li a,
+.navbar.navbar-default.navbar-fixed-bottom li a:hover,
+.navbar.navbar-default.navbar-fixed-bottom li a:focus,
+.navbar.navbar-default.navbar-fixed-bottom li a:active,
+.navbar.navbar-default.navbar-fixed-bottom li.active a,
+.navbar.navbar-default.navbar-fixed-bottom li.active a:hover,
+.navbar.navbar-default.navbar-fixed-bottom li.active a:focus {
+  color: #fff !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  background-color: #5b9bd5 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
