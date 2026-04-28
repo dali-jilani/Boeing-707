@@ -58,10 +58,13 @@
 
 /* Textes noirs — EN / TA / TG / TT */
 .att > li, ul.att li {
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-weight: normal !important;
   color: #000 !important;
   cursor: default;
+}
+.att > li a, ul.att li a {
+  font-size: 15px !important;
 }
 .att > li:hover, ul.att li:hover {
   text-decoration: underline !important;
