@@ -1,0 +1,395 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C-ADER — Accueil | Musée de l'Air et de l'Espace</title>
+  <meta name="description" content="Page d'accueil du projet C-ADER — Jumeaux numériques des aéronefs patrimoniaux">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+/* ============================================================
+   C-ADER — Design System
+   Musée de l'Air et de l'Espace
+   ============================================================ */
+
+:root {
+  --mae-blue:    #0B1D40;
+  --mae-red:     #ED1C24;
+  --mae-grey:    #798396;
+  --mae-light:   #ffffff;
+  --mae-border:  rgba(11,29,64,.12);
+  --mae-text:    rgba(11,29,64,.85);
+  --mae-text2:   rgba(11,29,64,.65);
+  --mae-dark-bg: #060E1F;
+  --mae-gold:    #C8A96E;
+  --radius:      14px;
+  --radius-lg:   18px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--mae-dark-bg);
+  color: var(--mae-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: var(--mae-gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+
+/* ============================================================
+   ANR BANNER
+   ============================================================ */
+.anr-banner {
+  background: #f9f7f3;
+  border-bottom: 3px solid #c8a96e;
+  padding: 18px 32px 14px;
+  text-align: center;
+}
+.anr-banner__text {
+  font-size: 15px; font-weight: 400; color: rgb(24,43,73);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4; margin-bottom: 14px;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.anr-banner__logos {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: 24px;
+}
+.anr-banner__logos img {
+  height: 56px; width: auto;
+  object-fit: contain; object-position: center;
+}
+@media (max-width: 640px) {
+  .anr-banner__logos img { height: 38px; }
+  .anr-banner__text { font-size: 13px; }
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  display: none;
+}
+.navbar.scrolled {
+  background: rgba(6,14,31,.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+}
+.navbar__logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.navbar__logo img { height: 36px; }
+.navbar__logo span {
+  color: var(--mae-light); font-size: 13px; font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  position: relative; width: 100%; height: 100vh;
+  background: var(--mae-dark-bg);
+  display: flex; align-items: center; justify-content: center;
+}
+#hero model-viewer {
+  width: 100%; height: 100%;
+  --poster-color: transparent;
+}
+
+/* ============================================================
+   PROJECTS SECTION
+   ============================================================ */
+.projects-section {
+  padding: 100px 24px 110px;
+  background: var(--mae-dark-bg);
+  text-align: center;
+}
+.projects-section__title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: var(--mae-light);
+  margin-bottom: 12px;
+}
+.projects-section__subtitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: rgba(255,255,255,.8);
+  line-height: 1.3;
+  margin-bottom: 48px;
+  letter-spacing: .01em;
+}
+.projects-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.project-card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(200,169,110,.25);
+  border-radius: var(--radius-lg);
+  padding: 52px 36px 40px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: background .3s, border-color .3s, transform .3s, box-shadow .3s;
+}
+.project-card:hover {
+  background: rgba(255,255,255,.12);
+  border-color: var(--mae-gold);
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.3);
+  text-decoration: none;
+}
+.project-card__icon {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.project-card__name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.7rem;
+  color: var(--mae-light);
+  line-height: 1.15;
+}
+.project-card__sub {
+  color: var(--mae-gold);
+  font-size: .95rem;
+  font-style: italic;
+  margin-top: 4px;
+}
+.project-card__desc {
+  color: rgba(255,255,255,.55);
+  font-size: .9rem;
+  line-height: 1.65;
+  max-width: 300px;
+}
+.project-card__btn {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 13px 32px;
+  background: transparent;
+  border: 1.5px solid var(--mae-gold);
+  color: var(--mae-gold);
+  border-radius: 8px;
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: background .25s, color .25s;
+}
+.project-card:hover .project-card__btn {
+  background: var(--mae-gold);
+  color: var(--mae-dark-bg);
+}
+.project-card--disabled {
+  opacity: .55;
+  cursor: default;
+}
+.project-card--disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(255,255,255,.07);
+  border-color: rgba(200,169,110,.25);
+}
+.project-card--disabled:hover .project-card__btn {
+  background: transparent;
+  color: var(--mae-gold);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  text-align: center; padding: 40px 24px;
+  background: var(--mae-dark-bg);
+  border-top: 1px solid rgba(200,169,110,.15);
+  color: rgba(255,255,255,.75); font-size: 16px; font-weight: 400;
+}
+.site-footer strong { color: var(--mae-gold); }
+.site-footer .footer-anr-text {
+  margin: 16px auto 0; max-width: 800px;
+  font-size: 16px; font-weight: 400; line-height: 1.7;
+  color: rgba(255,255,255,.75);
+}
+.site-footer .footer-anr-text a {
+  color: var(--mae-gold); text-decoration: underline;
+}
+.site-footer .footer-logos-row1,
+.site-footer .footer-logos-row2 {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: 20px; margin: 12px auto 0; max-width: 900px;
+}
+.site-footer .footer-logos-row1 img {
+  height: 52px; width: auto;
+  object-fit: contain;
+  background: rgba(255,255,255,.9);
+  border-radius: 5px; padding: 5px 10px;
+}
+.site-footer .footer-logos-row2 img {
+  width: 140px; height: 80px;
+  object-fit: contain;
+  background: rgba(255,255,255,.9);
+  border-radius: 5px; padding: 8px 12px;
+}
+.site-footer .footer-disclaimer {
+  margin: 20px auto 0; max-width: 800px;
+  font-size: 16px; font-weight: 400; line-height: 1.7;
+  color: rgba(255,255,255,.75);
+}
+.site-footer .footer-disclaimer a {
+  color: var(--mae-gold); text-decoration: underline;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .projects-section { padding: 64px 16px; }
+  .project-card { padding: 36px 24px 30px; }
+  .project-card__name { font-size: 1.4rem; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ======== ANR BANNER ======== -->
+  <div class="anr-banner">
+    <p class="anr-banner__text">
+      Projet C-ADER financé par l'Agence Nationale de la Recherche (ANR) sous le numéro ANR-22-CE27-0025.<br>
+      Ce projet s'inscrit dans le cadre de l'appel à projets CE27 — Études du passé, patrimoines, cultures.
+    </p>
+    <div class="anr-banner__logos">
+      <img src="Logo/Logo_ANR.png"   alt="Logo de l'Agence Nationale de la Recherche (ANR)">
+      <img src="Logo/Logo_MAE.png"   alt="Logo du Musée de l'Air et de l'Espace (MAE)"   style="height:74px;">
+      <img src="Logo/Logo_IRCP.png"  alt="Logo de l'Institut de Recherche de Chimie Paris (IRCP)" style="height:36px;">
+      <img src="Logo/Logo_C2RMF.gif" alt="Logo du Centre de Recherche et de Restauration des Musées de France (C2RMF)" style="height:74px;">
+      <img src="Logo/Logo_IS.jpg"    alt="Logo de l'Institut de Soudure (IS)">
+      <img src="Logo/Logo_IJL.jpg"   alt="Logo de l'Institut Jean Lamour (IJL)">
+    </div>
+  </div>
+
+  <!-- ======== PROJECTS ======== -->
+  <section class="projects-section">
+    <p class="projects-section__subtitle">Sélectionnez un aéronef pour explorer son jumeau numérique</p>
+    <div class="projects-grid">
+      <!-- La Caravelle — à venir -->
+      <a class="project-card project-card--disabled"
+         href="#"
+         onclick="window.open('','_blank'); return false;"
+         aria-label="La Caravelle — à venir">
+        <img src="images/caravelle-club-sud-aviation-se-210.jpg"
+             alt="Caravelle Sud Aviation SE 210"
+             style="width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:4px;">
+        <div class="project-card__name">La Caravelle</div>
+        <div class="project-card__sub">À venir</div>
+        <p class="project-card__desc">
+          Jumeau numérique de la Caravelle — en cours de développement.
+        </p>
+        <span class="project-card__btn">Explorer</span>
+      </a>
+
+      <!-- Boeing 707 -->
+      <a class="project-card"
+         href="boeing707.html"
+         target="_blank"
+         aria-label="Boeing 707 — Château de Maintenon">
+        <img src="images/boeing%20707%20chateau%20de%20maintenon.jpg"
+             alt="Boeing 707 Château de Maintenon"
+             style="width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:4px;">
+        <div class="project-card__name">Boeing 707</div>
+        <div class="project-card__sub">Château de Maintenon</div>
+        <p class="project-card__desc">
+          Exploration du jumeau numérique du Boeing 707 conservé au Musée de l'Air et de l'Espace.
+        </p>
+        <span class="project-card__btn">Explorer</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer">
+    <p><strong>C-ADER</strong> — Jumeau numérique du Boeing 707</p>
+    <p>Musée de l'Air et de l'Espace &middot; Le Bourget</p>
+
+    <div class="footer-logos-row1">
+      <img src="Logo/Logo_ANR.png" alt="Logo de l'Agence Nationale de la Recherche (ANR)">
+    </div>
+    <div class="footer-logos-row2">
+      <img src="Logo/Logo_MAE.png"   alt="Logo du Musée de l'Air et de l'Espace (MAE)">
+      <img src="Logo/Logo_IRCP.png"  alt="Logo de l'Institut de Recherche de Chimie Paris (IRCP)">
+      <img src="Logo/Logo_C2RMF.gif" alt="Logo du Centre de Recherche et de Restauration des Musées de France (C2RMF)">
+      <img src="Logo/Logo_IS.jpg"    alt="Logo de l'Institut de Soudure (IS)">
+      <img src="Logo/Logo_IJL.jpg"   alt="Logo de l'Institut Jean Lamour (IJL)">
+    </div>
+
+    <p class="footer-anr-text" style="margin-top:24px;">
+      Le jumeau numérique présenté sur ce site est développé dans le cadre du projet C-ADER :
+      <em>Conservation d'anciens aéronefs : Diagnostic non-destructif des dommages pour une protection intelligente contre la corrosion</em>,
+      financé par l'Agence Nationale de la Recherche (ANR) sous le numéro ANR-22-CE27-0025.
+    </p>
+
+    <p class="footer-disclaimer">
+      Les contenus n'engagent que leurs auteurs.<br>
+      <a href="https://anr.fr/Projet-ANR-22-CE27-0025" target="_blank" rel="noopener">
+        En savoir plus sur le projet C-ADER sur le site de l'ANR (référence ANR-22-CE27-0025).
+      </a>
+    </p>
+  </footer>
+
+  <script>
+  (() => {
+    'use strict';
+
+    const navbar = document.getElementById('navbar');
+    const heroSection = document.getElementById('hero');
+
+    function updateNavbar() {
+      if (!navbar || !heroSection) return;
+      const threshold = heroSection.offsetHeight - 80;
+      navbar.classList.toggle('scrolled', window.scrollY > threshold);
+    }
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar();
+
+    (function () {
+      var hero = document.getElementById('hero');
+      if (!hero) return;
+      hero.addEventListener('wheel', function (e) {
+        window.scrollBy({ top: e.deltaY, behavior: 'auto' });
+      }, { passive: true });
+      var touchStartY = 0;
+      hero.addEventListener('touchstart', function (e) {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      hero.addEventListener('touchmove', function (e) {
+        var dy = touchStartY - e.touches[0].clientY;
+        window.scrollBy({ top: dy, behavior: 'auto' });
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+    })();
+  })();
+  </script>
+
+</body>
+</html>
