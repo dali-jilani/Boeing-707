@@ -575,7 +575,6 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
       <li><a href="#histoire">Présentation</a></li>
       <li><a href="#chronologie">Chronologie</a></li>
       <li><a href="#fiche-technique">Fiche technique</a></li>
-      <li><a href="#environnement">Environnement</a></li>
     </ul>
   </nav>
 
@@ -822,32 +821,6 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
     </div>
   </section>
 
-  <!-- ======== ENVIRONNEMENT ======== -->
-  <section id="environnement" class="section section--dark">
-    <div class="section__inner">
-      <h2 class="section__title reveal">Conditions environnementales</h2>
-      <p class="section__subtitle reveal">Donnees en temps reel — Paris (48.95°N, 2.43°E)</p>
-      <div class="env-grid">
-
-        <!-- Weather card -->
-        <div class="env-card reveal" id="weatherCard">
-          <h3>Meteo</h3>
-          <div class="env-weather-icon" id="weatherIcon">--</div>
-          <div class="env-weather-main">
-            <div class="temp" id="weatherTemp">--</div>
-            <div class="desc" id="weatherDesc">Chargement...</div>
-          </div>
-          <div class="env-row"><span class="label">Humidite</span><span class="value" id="weatherHum">--</span></div>
-          <div class="gauge-bar"><div class="gauge-bar__fill" id="humGauge"></div></div>
-          <div class="env-row"><span class="label">Point de rosee</span><span class="value" id="weatherDew">--</span></div>
-          <div class="env-row"><span class="label">Vent</span><span class="value" id="weatherWind">--</span></div>
-        </div>
-
-
-      </div>
-    </div>
-  </section>
-
   <!-- ======== FOOTER ======== -->
   <footer class="site-footer">
     <p><strong>C-ADER</strong> — Jumeau numérique du Boeing 707</p>
@@ -1059,46 +1032,6 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
   document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
   /* ----------------------------------------------------------
-     5. WEATHER API — Open-Meteo
-     ---------------------------------------------------------- */
-  const WMO_LABELS = {
-    0: ['Ciel degage', '☀️'], 1: ['Peu nuageux', '🌤️'],
-    2: ['Partiellement nuageux', '⛅'], 3: ['Couvert', '☁️'],
-    45: ['Brouillard', '🌫️'], 48: ['Brouillard givrant', '🌫️'],
-    51: ['Bruine legere', '🌦️'], 53: ['Bruine', '🌦️'], 55: ['Bruine dense', '🌧️'],
-    61: ['Pluie legere', '🌦️'], 63: ['Pluie', '🌧️'], 65: ['Pluie forte', '🌧️'],
-    71: ['Neige legere', '🌨️'], 73: ['Neige', '❄️'], 75: ['Neige forte', '❄️'],
-    80: ['Averses', '🌦️'], 81: ['Averses moderes', '🌧️'], 82: ['Averses violentes', '⛈️'],
-    95: ['Orage', '⛈️'], 96: ['Orage / grele', '⛈️'], 99: ['Orage / forte grele', '⛈️']
-  };
-
-  async function loadWeather() {
-    try {
-      const url = 'https://api.open-meteo.com/v1/forecast?latitude=48.953&longitude=2.430&current=temperature_2m,relative_humidity_2m,dew_point_2m,weather_code,wind_speed_10m';
-      const res = await fetch(url);
-      const data = await res.json();
-      const c = data.current;
-
-      const wmo = WMO_LABELS[c.weather_code] || ['--', '🌡️'];
-      document.getElementById('weatherIcon').textContent = wmo[1];
-      document.getElementById('weatherDesc').textContent = wmo[0];
-      document.getElementById('weatherTemp').textContent = c.temperature_2m + ' °C';
-      document.getElementById('weatherHum').textContent = c.relative_humidity_2m + ' %';
-      document.getElementById('weatherDew').textContent = c.dew_point_2m + ' °C';
-      document.getElementById('weatherWind').textContent = c.wind_speed_10m + ' km/h';
-
-      // Humidity gauge
-      const humGauge = document.getElementById('humGauge');
-      humGauge.style.width = c.relative_humidity_2m + '%';
-      if (c.relative_humidity_2m < 60) humGauge.style.background = '#4caf50';
-      else if (c.relative_humidity_2m < 80) humGauge.style.background = '#ff9800';
-      else humGauge.style.background = '#f44336';
-    } catch {
-      document.getElementById('weatherDesc').textContent = 'Donnees indisponibles';
-    }
-  }
-
-  /* ----------------------------------------------------------
      7. WIKIPEDIA API — French extract
      ---------------------------------------------------------- */
   async function loadWikipedia() {
@@ -1125,7 +1058,6 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
   /* ----------------------------------------------------------
      8. INIT
      ---------------------------------------------------------- */
-  loadWeather();
   loadWikipedia();
 
 })();
@@ -1304,8 +1236,8 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
   letter-spacing: .14em; text-transform: uppercase; color: var(--macc); margin-bottom: .75rem;
 }
 .mon-h1 {
-  font-family: var(--mff-disp); font-size: clamp(1.8rem,3.5vw,2.8rem);
-  font-weight: 500; line-height: 1.15; color: var(--mink); margin-bottom: 1rem;
+  font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem,3.5vw,2.8rem);
+  font-weight: 500; line-height: 1.15; color: var(--mae-blue); margin-bottom: 1rem;
 }
 .mon-h1 em { font-style: italic; color: var(--macc); }
 .mon-desc { font-family: var(--mff-body); font-size: 14px; color: var(--mink3); line-height: 1.8; max-width: 440px; }
@@ -1322,7 +1254,7 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
 /* Sections */
 .mon-ed-section { padding: 3rem; border-bottom: 1px solid var(--mborder); background: var(--mpaper); font-family: var(--mff-body); }
 .mon-ed-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
-.mon-ed-title { font-family: var(--mff-disp); font-size: 1.6rem; font-weight: 500; color: var(--mink); }
+.mon-ed-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; font-weight: 500; color: var(--mae-blue); }
 .mon-ed-num { font-family: var(--mff-mono); font-size: 11px; color: var(--mink4); letter-spacing: .1em; }
 /* Photos */
 .mon-pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -1553,7 +1485,7 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
 <div class="mon-panel" id="mon-panel" role="dialog" aria-modal="true" aria-label="Monitoring Porte Voyageur Boeing 707">
   <div class="mon-panel__header">
     <button class="mon-panel__back" id="mon-panel-back" aria-label="Retour à l'accueil">&#8592;</button>
-    <h2>Monitoring — Porte Voyageur Boeing 707</h2>
+    <h2>Monitoring — Section de fuselage située au-dessous de la porte du Boeing 707</h2>
     <button class="mon-panel__close" id="mon-panel-close" aria-label="Fermer">&#x2715;</button>
   </div>
   <div class="mon-panel__body">
@@ -1561,14 +1493,13 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
     <!-- Hero -->
     <div class="mon-hero mon-fade">
       <div>
-        <div class="mon-eyebrow">Surveillance de corrosion · Porte passagers</div>
-        <h2 class="mon-h1">L'état de surface<br>de <em>cette porte</em><br>en temps quasi réel</h2>
+        <h2 class="mon-h1">Suivi de l'état structural du fuselage en temps quasi réel</h2>
         <p class="mon-desc">Le monitoring concerne une zone de fuselage du Boeing 707 « Château de Maintenon », située au-dessous de la porte de l'avion.</p>
         <p class="mon-desc" style="margin-top:.75rem">La technique employée repose sur la propagation d'ondes ultrasonores guidées. Deux capteurs piézoélectriques sont utilisés espacés de 540 mm pour générer et recevoir les ondes ultrasonores guidées.</p>
         <p class="mon-desc" style="margin-top:.75rem">Lorsqu'une tension alternative est appliquée, le capteur piézoélectrique transmet une onde ultrasonore qui se charge d'informations relatives à l'état de santé de la structure.</p>
         <div class="mon-meta">
-          <div><div class="mon-meta-label">Appareil</div><div class="mon-meta-val">Boeing 707</div></div>
-          <div><div class="mon-meta-label">Zone capteur</div><div class="mon-meta-val">Porte L1</div></div>
+          <div><div class="mon-meta-label">Appareil</div><div class="mon-meta-val">Château de Maintenon</div></div>
+          <div><div class="mon-meta-label">Zone capteur</div><div class="mon-meta-val">Fuselage sous porte</div></div>
           <div><div class="mon-meta-label">Espacement</div><div class="mon-meta-val">540 mm</div></div>
           <div><div class="mon-meta-label">Périodicité</div><div class="mon-meta-val">2 mois</div></div>
         </div>
@@ -1581,6 +1512,7 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
     <!-- 01 · Photo inspection -->
     <div class="mon-ed-section mon-fade">
       <div class="mon-ed-header">
+        <h2 class="mon-ed-title">Principe de monitoring par ondes ultrasonores guidées</h2>
         <span class="mon-ed-num">01 · Relevés photographiques</span>
       </div>
       <div style="display:grid;grid-template-columns:0.75fr 1.25fr;gap:1.5rem;align-items:center;">
@@ -1652,19 +1584,17 @@ dialog::backdrop { background: rgba(6,14,31,.8); }
       </div>
       <div class="mon-pred-grid">
         <div class="mon-pred-card">
-          <div class="mon-pred-horizon">Dans 30 jours</div>
-          <div class="mon-pred-val">3.8%</div>
-          <div class="mon-pred-delta mon-ok">progression maîtrisée</div>
+          <div class="mon-pred-horizon">Dernière campagne</div>
+          <div class="mon-pred-val" style="font-size:1.3rem;padding-top:4px">Mai 2026</div>
         </div>
         <div class="mon-pred-card">
-          <div class="mon-pred-horizon">Dans 90 jours</div>
-          <div class="mon-pred-val">5.1%</div>
-          <div class="mon-pred-delta mon-up">seuil critique approché</div>
-        </div>
-        <div class="mon-pred-card" style="border-color:#b85a1a;border-width:1.5px">
-          <div class="mon-pred-horizon">Intervention recommandée</div>
+          <div class="mon-pred-horizon">Prochaine campagne</div>
           <div class="mon-pred-val" style="font-size:1.3rem;padding-top:4px">Juillet 2026</div>
-          <div class="mon-pred-delta mon-up">traitement anti-corrosion</div>
+        </div>
+        <div class="mon-pred-card">
+          <div class="mon-pred-horizon">État structurel</div>
+          <div class="mon-pred-val" style="font-size:1.3rem;padding-top:4px">✅ Normal</div>
+          <div class="mon-pred-delta mon-ok">dans les seuils</div>
         </div>
       </div>
     </div>
